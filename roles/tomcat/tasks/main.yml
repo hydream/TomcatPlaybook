@@ -49,7 +49,8 @@
 
 
 - name: Ensure tomcat is running (and enable it at boot)
-  service: name=tomcat state=started enabled=yes
+  command: service tomcat start
+  #service: name=tomcat state=restarted enabled=yes
 
 #- name: deploy iptables rules
 #  template: src=iptables-save dest=/etc/sysconfig/iptables
