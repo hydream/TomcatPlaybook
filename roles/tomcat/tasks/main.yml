@@ -43,7 +43,8 @@
 #  sudo: yes
 
 - name: Start Tomcat
-  service: name=tomcat state=restarted enabled=yes
+# service: name=tomcat state=restarted enabled=yes
+  shell: sh /usr/share/tomcat/bin/startup.sh
 
 #- name: deploy iptables rules
 #  template: src=iptables-save dest=/etc/sysconfig/iptables
