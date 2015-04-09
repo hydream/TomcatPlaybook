@@ -1,4 +1,8 @@
 [tomcat-servers]
-172.17.0.23
-172.17.0.24
-172.17.0.25
+172.17.0.2 ansible_ssh_user=root ansible_ssh_pass=123
+172.17.0.3 ansible_ssh_user=root ansible_ssh_pass=123
+172.17.0.4 ansible_ssh_user=root ansible_ssh_pass=123
+
+
+
+
