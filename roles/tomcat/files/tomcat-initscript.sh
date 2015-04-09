@@ -41,21 +41,25 @@ tomcat_pid() {
  
 start() {
   pid=$(tomcat_pid)
-  if [ -n "$pid" ] 
+  if [ -n "$pid" ]
   then
-    echo "Tomcat is already running (pid: $pid)"
+    echo -e "\e[00;31mTomcat is already running (pid: $pid)\e[00m"
   else
     # Start tomcat
-    echo "Starting tomcat"
-    ulimit -n 100000
-    umask 007
-    /bin/su -p -s /bin/sh tomcat $CATALINA_HOME/bin/startup.sh
+    echo -e "\e[00;32mStarting tomcat\e[00m"
+    #ulimit -n 100000
+    #umask 007
+    #/bin/su -p -s /bin/sh tomcat
+        if [ `user_exists $TOMCAT_USER` = "1" ]
+        then
+                su $TOMCAT_USER -c $CATALINA_HOME/bin/startup.sh
+        else
+                sh $CATALINA_HOME/bin/startup.sh
+        fi
+        status
   fi
- 
- 
   return 0
 }
- 
 status(){
           pid=$(tomcat_pid)
           if [ -n "$pid" ]; then echo -e "\e[00;32mTomcat is running with pid: $pid\e[00m"
