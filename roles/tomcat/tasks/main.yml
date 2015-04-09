@@ -9,11 +9,11 @@
 
 - name: add user "tomcat"
   user: name=tomcat group=tomcat home=/usr/share/tomcat
-  sudo: True
+  sudo: yes
 
 - name: delete home dir for symlink of tomcat
   shell: rm -fr /usr/share/tomcat
-  sudo: True
+  sudo: yes
 
 - name: Download Tomcat
   get_url: url=http://www.us.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin//apache-tomcat-7.0.61.tar.gz dest=/opt/apache-tomcat-7.0.61.tar.gz
@@ -37,6 +37,9 @@
 
 - name: Install Tomcat init script
   copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=755
+
+  shell: chmod 755 /etc/init.d/tomcat
+  sudo: yes
 
 - name: Start Tomcat
   service: name=tomcat state=restarted enabled=yes
