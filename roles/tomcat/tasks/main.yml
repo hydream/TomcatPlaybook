@@ -45,7 +45,7 @@
 - name: Start Tomcat
 # service: name=tomcat state=restarted enabled=yes
   command: sh /usr/share/tomcat/bin/startup.sh
-  sodu: yes
+
 
 #- name: deploy iptables rules
 #  template: src=iptables-save dest=/etc/sysconfig/iptables
