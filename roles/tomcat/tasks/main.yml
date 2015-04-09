@@ -36,11 +36,11 @@
 # notify: restart tomcat
 
 - name: Install Tomcat init script
-  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=755
+  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
 
 - name: chmod permissions of init.d/tomcat
-  shell: chmod 755 /etc/init.d/tomcat
-  sudo: yes
+#  shell: chmod 755 /etc/init.d/tomcat
+#  sudo: yes
 
 - name: Start Tomcat
   service: name=tomcat state=restarted enabled=yes
