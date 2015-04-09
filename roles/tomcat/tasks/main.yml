@@ -53,5 +53,5 @@
 #  template: src=iptables-save dest=/etc/sysconfig/iptables
 #  notify: restart iptables
 
-- name: wait for tomcat to start
-  wait_for: port={{http_port}}
+#- name: wait for tomcat to start
+#  wait_for: port={{http_port}}
