@@ -42,9 +42,9 @@
 #  shell: chmod 755 /etc/init.d/tomcat
 #  sudo: yes
 
-- name: Start Tomcat
 # service: name=tomcat state=restarted enabled=yes
-  command:/usr/share/tomcat/bin/startup.sh
+- name: Start Tomcat
+  command: /usr/share/tomcat/bin/startup.sh
   sudo: yes
 
 #-name: ensure tomcat is running (and enable it at boot)
