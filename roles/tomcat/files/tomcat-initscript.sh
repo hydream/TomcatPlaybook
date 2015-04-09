@@ -36,7 +36,7 @@ TOMCAT_USAGE="Usage: $0 {\e[00;32mstart\e[00m|\e[00;31mstop\e[00m|\e[00;32mstatu
 SHUTDOWN_WAIT=20
  
 tomcat_pid() {
-        echo `ps -fe | grep /usr/share/tomcat | grep -v grep | tr -s " "|cut -d" " -f2`
+        echo `ps -fe | grep $CATALINA_BASE | grep -v grep | tr -s " "|cut -d" " -f2`
 }
  
 start() {
@@ -47,24 +47,22 @@ start() {
   else
     # Start tomcat
     echo -e "\e[00;32mStarting tomcat\e[00m"
-    echo "starting tomcat!!!!!!!!!!!!!!!!!!"
     #ulimit -n 100000
     #umask 007
     #/bin/su -p -s /bin/sh tomcat
-        if [ `user_exists tomcat` = "1" ]
+        if [ `user_exists $TOMCAT_USER` = "1" ]
         then
-                #su tomcat -c /usr/share/tomcat/bin/startup.sh
-                 sh /usr/share/tomcat/bin/startup.sh
-                 echo "user tom starting tomcat!!!!!!!!!!!!!!!!!!"
+                su $TOMCAT_USER -c $CATALINA_HOME/bin/startup.sh
+                echo "tom start"
         else
-                sh /usr/share/tomcat/bin/startup.sh
-                echo "root tom starting tomcat!!!!!!!!!!!!!!!!!!"
+                sh $CATALINA_HOME/bin/startup.sh
+                echo "root start"
         fi
         status
   fi
   return 0
 }
-
+ 
 status(){
           pid=$(tomcat_pid)
           if [ -n "$pid" ]; then echo -e "\e[00;32mTomcat is running with pid: $pid\e[00m"
@@ -78,7 +76,7 @@ stop() {
   then
     echo -e "\e[00;31mStoping Tomcat\e[00m"
     #/bin/su -p -s /bin/sh tomcat
-        sh /usr/share/tomcat/bin/shutdown.sh
+        sh $CATALINA_HOME/bin/shutdown.sh
  
     let kwait=$SHUTDOWN_WAIT
     count=0;
@@ -129,7 +127,7 @@ case $1 in
         ;;
        
         *)
-                echo -e "Usage: $0 {\e[00;32mstart\e[00m|\e[00;31mstop\e[00m|\e[00;32mstatus\e[00m|\e[00;31mrestart\e[00m}"
+                echo -e $TOMCAT_USAGE
         ;;
 esac    
 exit 0

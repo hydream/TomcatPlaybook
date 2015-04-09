@@ -44,8 +44,7 @@
 
 
 - name: Start Tomcat
-  command: sh /usr/share/tomcat/bin/startup.sh
-  sudo: yes
+  command: sudo /usr/share/tomcat/bin/startup.sh
 
 
 - name: Ensure tomcat is running (and enable it at boot)
@@ -56,5 +55,5 @@
 #  template: src=iptables-save dest=/etc/sysconfig/iptables
 #  notify: restart iptables
 
-#- name: wait for tomcat to start
-#  wait_for: port={{http_port}}
+- name: wait for tomcat to start
+  wait_for: port={{http_port}}
