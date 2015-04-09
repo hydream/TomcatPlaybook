@@ -51,7 +51,7 @@ start() {
     #umask 007
     #/bin/su -p -s /bin/sh tomcat
        
-                sh $CATALINA_HOME/bin/startup.sh
+                sh /usr/share/tomcat/bin/startup.sh
         
         status
   fi
