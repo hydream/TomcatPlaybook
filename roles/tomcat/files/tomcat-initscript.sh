@@ -54,10 +54,7 @@ start() {
         if [ `user_exists tomcat` = "1" ]
         then
                 #su tomcat -c /usr/share/tomcat/bin/startup.sh
-                 cd /usr/share/tomcat/bin/
-                 pwd
-                 echo "workhome"
-                 su -p -s /usr/share/tomcat/bin/startup.sh
+                 sh /usr/share/tomcat/bin/startup.sh
                  echo "user tom starting tomcat!!!!!!!!!!!!!!!!!!"
         else
                 sh /usr/share/tomcat/bin/startup.sh
