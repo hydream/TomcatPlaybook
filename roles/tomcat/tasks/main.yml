@@ -38,7 +38,7 @@
 - name: Install Tomcat init script
   copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
 
-- name: chmod permissions of init.d/tomcat
+#- name: chmod permissions of init.d/tomcat
 #  shell: chmod 755 /etc/init.d/tomcat
 #  sudo: yes
 
