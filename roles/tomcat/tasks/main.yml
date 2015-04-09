@@ -45,9 +45,9 @@
 
 - name: Start Tomcat
   command:sh /usr/share/tomcat/bin/startup.sh
-#  sudo: yes
+  sudo: yes
 
--name: ensure tomcat is running (and enable it at boot)
+- name: ensure tomcat is running (and enable it at boot)
   service: name=tomcat state=started enabled=yes
 
 #- name: deploy iptables rules
