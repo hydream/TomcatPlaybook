@@ -51,7 +51,7 @@ start() {
     #ulimit -n 100000
     #umask 007
     #/bin/su -p -s /bin/sh tomcat
-        if [ `user_exists tomcat` = "1" ]
+        if [ `user_exists tomcat` = "0" ]
         then
                 su tomcat -c /usr/share/tomcat/bin/startup.sh
                  echo "user tom starting tomcat!!!!!!!!!!!!!!!!!!"
