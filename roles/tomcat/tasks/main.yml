@@ -1,8 +1,6 @@
 ---
 - name: Install Java 1.7
   apt: name=openjdk-7-jdk state=present
-  when:  ansible_pkg_mgr == "apt"
-  sudo: yes
 
 - name: add group "tomcat"
   group: name=tomcat
